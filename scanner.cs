@@ -17,7 +17,7 @@ namespace fpgaScanner
         }
         public static void Scan()
         {
-            bool verbose = true;
+            bool verbose = false;
             Console.WriteLine("Begin Scan");
             StringBuilder str = new StringBuilder();
             // Get a list of serial port names.
