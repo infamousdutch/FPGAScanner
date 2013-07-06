@@ -17,7 +17,7 @@ namespace fpgaScanner
         }
         public static void Scan()
         {
-            bool verbose = false;
+            bool verbose = true;
             Console.WriteLine("Begin Scan");
             StringBuilder str = new StringBuilder();
             // Get a list of serial port names.
@@ -94,11 +94,16 @@ namespace fpgaScanner
 
             serialPort.Write("ZGX");
 
-            string strS = serialPort.ReadLine();
+            string strS = serialPort.ReadLine().ToLower();
             if (verbose)
                 Console.WriteLine("Command Received: " + strS);
 
-            return strS.Contains("BitFORCE SHA256");
+            bool retval = strS.Contains("bitforce");
+            //if (!retval)
+            //{
+            //  //  strS.Contains("BitFORCE SHA256");
+            //}
+            return retval;// strS.Contains("BitFORCE SHA256");
            
         }
     }
